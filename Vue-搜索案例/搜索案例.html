@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <p>搜索关键字：
+        <input type="text" v-model="keyword">
+    </p>
+
+    <ul v-for="(stu,index) in searchList(keyword)" :key="index">
+        <li>{{stu.name}}</li>
+        <li>{{stu.sex}}</li>
+        <li>{{stu.age}}</li>
+        <li>{{stu.phone}}</li>
+    </ul>
+
+
+</div>
+
+<script src="../vue.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            keyword: '',
+            students: [
+                {name: '张三', sex: '女', age: 19, phone: '18921212121'},
+                {name: '李四', sex: '男', age: 29, phone: '18921221121'},
+                {name: '王五', sex: '女', age: 39, phone: '18921788721'},
+                {name: '赵六', sex: '男', age: 49, phone: '18921556121'},
+                {name: '李四', sex: '男', age: 29, phone: '18921221121'},
+                {name: '王五', sex: '女', age: 39, phone: '18921788721'},
+                {name: '李四', sex: '男', age: 29, phone: '18921221121'},
+                {name: '王五', sex: '女', age: 39, phone: '18921788721'},
+                {name: '王五', sex: '女', age: 39, phone: '18921788721'},
+                {name: '赵六', sex: '男', age: 49, phone: '18921556121'},
+                {name: '李思思', sex: '男', age: 29, phone: '18921221121'},
+                {name: '张三', sex: '女', age: 19, phone: '18921212121'},
+                {name: '李四', sex: '男', age: 29, phone: '18921221121'},
+                {name: '王五', sex: '女', age: 39, phone: '18921788721'},
+                {name: '赵六', sex: '男', age: 49, phone: '18921556121'},
+                {name: '李四', sex: '男', age: 29, phone: '18921221121'},
+                {name: '王五', sex: '女', age: 39, phone: '18921788721'},
+                {name: '李四', sex: '男', age: 29, phone: '18921221121'},
+                {name: '王五', sex: '女', age: 39, phone: '18921788721'},
+                {name: '王五', sex: '女', age: 39, phone: '18921788721'},
+                {name: '赵六', sex: '男', age: 49, phone: '18921556121'},
+                {name: '李五五', sex: '男', age: 29, phone: '18921221121'}
+            ],
+        },
+        methods: {
+            searchList(keyword) {
+                return this.students.filter((student)=> {
+                    if (student.name.includes(keyword) || student.phone.includes(keyword)) {
+                        return student;
+                    }
+                })
+            }
+        }
+    })
+</script>
+</body>
+</html>

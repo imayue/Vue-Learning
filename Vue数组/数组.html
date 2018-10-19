@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--如果用v-for迭代数字，则从1开始-->
+    <!--<p v-for="count in 100">{{count}}</p>-->
+
+    <ul ref="ulParent">
+        <li style="height: 60px;border: 1px solid #000">1</li>
+        <li style="height: 40px;border: 1px solid #000">2</li>
+        <li style="height: 30px;border: 1px solid #000">3</li>
+        <li style="height: 20px;border: 1px solid #000">4</li>
+        <li style="height: 50px;border: 1px solid #000">5</li>
+    </ul>
+
+    <button @click="btnClick()">获取元素高度</button>
+    <button @click="someClick()">验证some</button>
+</div>
+
+<script src="../vue.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            dataArr: ['a','b','c']
+        },
+        methods: {
+            btnClick() {
+                let liHeight = [];
+                // 获取dom
+                let liArr = this.$refs.ulParent.getElementsByTagName("li");
+                console.log(liArr);
+                console.log(Array.prototype.slice.call(liArr)); // 将伪数组转化为真数组
+
+                // forEach只能遍历真数组
+                Array.prototype.slice.call(liArr).forEach((li)=>{
+                    liHeight.push(li.clientHeight);
+                })
+                console.log(liHeight);
+            },
+            // 用于检测数组中的元素是否满足指定条件
+            someClick() {
+                let res = this.dataArr.some((str)=> {
+                    return str === 'd';
+                })
+                console.log(res);
+            }
+        }
+    })
+</script>
+</body>
+</html>

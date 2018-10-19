@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box1 {
+            width: 300px;
+            height: 40px;
+        }
+        .box2 {
+            font-size: 30px;
+            border: 1px solid #000;
+        }
+        .box3 {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <p class="box1 box2">独钓寒江雪</p>
+    <!--
+        class:
+            直接传递一个数组，这里的class需要用v-bind做数据绑定
+            在数组中使用表达式
+            可以使用对象来代替三元表达式
+    -->
+    <p :class="['box1','box2']">独钓寒江雪</p>
+    <!--<p :class="['box1','box2',isShow?'box3':'']">独钓寒江雪</p>-->
+
+    <!--以下两种最常用-->
+    <!--<p :class="[{'box1':isShow},{'box2':!isShow}]">独钓寒江雪</p>
+    <p :class="classObj">独钓寒江雪</p>-->
+</div>
+
+
+<script src="../vue.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data:{
+            isShow: true,
+            classObj: {
+                'box1':true,
+                'box2':true,
+                'box3':true
+            }
+        },
+        methods: {
+
+        }
+    })
+</script>
+</body>
+</html>
